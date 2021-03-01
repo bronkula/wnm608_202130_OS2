@@ -150,3 +150,16 @@ a:hover {
    .card.flat {
       padding:0;
    }
+
+
+   .card>:first-child { margin-top:0; }
+   .card>:last-child { margin-bottom:0; }
+
+
+
+/* WELL */
+.well {
+   background-color:var(--color-neutral-medium);
+   padding:0.5em;
+   border-radius:0.2em;
+}
