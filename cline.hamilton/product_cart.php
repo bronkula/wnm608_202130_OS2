@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <title>Product List</title>
+   <title>Product Cart</title>
    
    <?php include "parts/meta.php" ?>
 </head>
@@ -11,10 +11,10 @@
 
    <div class="container">
       <div class="card soft">
-         <h2>Product Item</h2>
+         <h2>Confirm Cart</h2>
 
-         <div>This is product item: #<?= $_GET['id'] ?></div>
-         <div><a href="product_added_to_cart.php">Add To Cart</a></div>
+         <div>This is some products</div>
+         <div><a href="product_checkout.php">Checkout</a></div>
       </div>
    </div>
 </body>
