@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+
+include "lib/php/functions.php";
+include "parts/templates.php";
+
+$cart = MYSQLIQuery("
+   SELECT *
+   FROM `products`
+   WHERE `id` IN (5,9,13)
+");
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
    <title>Product Cart</title>
@@ -13,8 +24,15 @@
       <div class="card soft">
          <h2>Confirm Cart</h2>
 
-         <div>This is some products</div>
-         <div><a href="product_checkout.php">Checkout</a></div>
+         <?php
+
+         echo array_reduce($cart,'makeCartList');
+
+         ?>
+
+         <div>
+            <a class="form-button" href="product_checkout.php">Checkout</a>
+         </div>
       </div>
    </div>
 </body>
