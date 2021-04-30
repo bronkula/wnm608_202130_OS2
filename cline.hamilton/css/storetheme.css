@@ -99,6 +99,34 @@ body {
 
 
 
+.card-section h2 {
+   margin:0;
+}
+
+
+
+.navbar a {
+   position:relative;
+}
+.navbar .badge {
+   position:absolute;
+   top:5px;
+   right:-0.5em;
+   font-size:0.6em;
+   padding:0.5em;
+   border-radius:1em;
+   background-color:white;
+   color:black;
+   line-height:1;
+   pointer-events:none;
+}
+.navbar .badge:empty {
+   display:none;
+}
+
+
+
+
 @media (max-width:1000px) {
    .container {
       padding-left:10px;
