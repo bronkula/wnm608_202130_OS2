@@ -31,6 +31,18 @@ function makeSortOptions() {
    }
 }
 
+function makeFilterSet() {
+   $options = [
+      "fruit",
+      "vegetable"
+   ];
+   foreach($options as $option) {
+      echo "
+      <a href='product_list.php?t=products_by_category&category=$option&d={$_GET['d']}&o={$_GET['o']}&l={$_GET['l']}&s={$_GET['s']}' class='form-button inline ".($option==$_GET['category']?"active":"")."'>$option</a>
+      ";
+   }
+}
+
 
 if(isset($_GET['t'])) {
    $result = makeStatement($_GET['t']);
@@ -60,23 +72,25 @@ if(isset($_GET['t'])) {
          <input type="search" name="s" placeholder="Search" value="<?= $_GET['s'] ?>">
       </form>
 
-      <div>
-         <a href="product_list.php?t=products_by_category&category=fruit&d=<?=$_GET['d']?>&o=<?=$_GET['o']?>&l=<?=$_GET['l']?>&s=<?=$_GET['s']?>" class="form-button inline">Fruit</a>
-         <a href="product_list.php?t=products_by_category&category=vegetable&d=<?=$_GET['d']?>&o=<?=$_GET['o']?>&l=<?=$_GET['l']?>&s=<?=$_GET['s']?>" class="form-button inline">Vegetable</a>
+      <div class="display-flex flex-align-center">
+         <div>
+            <? makeFilterSet() ?>
+         </div>
+         <div class="flex-stretch"></div>
+         <form action="product_list.php" method="get">
+            <input type="hidden" name="t" value="search">
+            <input type="hidden" name="s" value="<?=$_GET['s']?>">
+            <input type="hidden" name="d" value="<?=$_GET['d']?>">
+            <input type="hidden" name="o" value="<?=$_GET['o']?>">
+            <input type="hidden" name="l" value="<?=$_GET['l']?>">
+            <div class="form-select">
+               <select onChange="checkSort(this)">
+                  <? makeSortOptions() ?>
+               </select>
+            </div>
+         </form>
       </div>
 
-      <form action="product_list.php" method="get">
-         <input type="hidden" name="t" value="search">
-         <input type="hidden" name="s" value="<?=$_GET['s']?>">
-         <input type="hidden" name="d" value="<?=$_GET['d']?>">
-         <input type="hidden" name="o" value="<?=$_GET['o']?>">
-         <input type="hidden" name="l" value="<?=$_GET['l']?>">
-         <div class="form-select">
-            <select onChange="checkSort(this)">
-               <? makeSortOptions() ?>
-            </select>
-         </div>
-      </form>
 
       <h2>Product List</h2>
 
@@ -91,6 +105,9 @@ if(isset($_GET['t'])) {
 
       ?>
       </div>
+   </div>
+   <div class="container">
+      <div class="card soft"><a href="admin">Product Admin</a></div>
    </div>
 </body>
 </html>
