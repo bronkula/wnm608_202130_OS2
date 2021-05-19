@@ -75,6 +75,8 @@ function makeStatement($type) {
          break;
 
       // CRUD
+
+      /* MAKE SURE THESE COLUMNS MATCH THE COLUMNS IN YOUR PHPMYADMIN */
       case "product_update":
          $conn = MYSQLIConn();
          $stmt = $conn->prepare("UPDATE `products`
@@ -101,7 +103,8 @@ function makeStatement($type) {
          );
          $stmt->execute();
          break;
-
+         
+      /* MAKE SURE THESE COLUMNS MATCH THE COLUMNS IN YOUR PHPMYADMIN */
       case "product_insert":
          $conn = MYSQLIConn();
          $stmt = $conn->prepare("INSERT INTO `products`
